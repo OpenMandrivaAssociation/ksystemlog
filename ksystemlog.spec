@@ -1,0 +1,63 @@
+Summary:	System log viewer tool for KDE4
+Name:		ksystemlog
+Version:	4.11.0
+Release:	1
+Epoch:		2
+License:	GPLv2+
+Group:		Graphical desktop/KDE
+Url:		http://www.kde.org
+%define is_beta %(if test `echo %{version} |cut -d. -f3` -ge 70; then echo -n 1; else echo -n 0; fi)
+%if %{is_beta}
+%define ftpdir unstable
+%else
+%define ftpdir stable
+%endif
+Source0:	ftp://ftp.kde.org/pub/kde/%{ftpdir}/%{version}/src/%{name}-%{version}.tar.xz
+BuildRequires:	kdelibs4-devel
+Requires:	pciutils
+
+%description
+This program is developed for being used by beginner users, which don't know
+how to find information about their Linux system, and how the log files are
+in their computer. But it is also designed for advanced users, who want to
+quickly see problems occuring on their server.
+
+KSystemLog has the following features :
+- View all the main log of your system, by selecting them directly in a menu
+- Auto display new lines logged in bold
+- Tabbed view to allow displaying several logs at the same time
+- Saving in a file and copying to clipboard the selected log lines are also
+  implemented (and email to your friends)
+- It can parse the following log files of your system:
+  - X.org (or Xfree) logs
+  - System logs (using the Syslog parser of KSystemLog)
+  - Kernel logs
+  - Daemons logs
+  - Cron logs
+  - Boot logs
+  - Authentication logs
+  - Cups logs
+  - ACPID logs
+
+%files
+%{_kde_bindir}/ksystemlog
+%{_kde_appsdir}/ksystemlog
+%{_kde_applicationsdir}/ksystemlog.desktop
+%{_kde_docdir}/*/*/ksystemlog
+
+#------------------------------------------------------------------------
+
+%prep
+%setup -q
+
+%build
+%cmake_kde4
+%make
+
+%install
+%makeinstall_std -C build
+
+%changelog
+* Wed Aug 14 2013 Andrey Bondrov <andrey.bondrov@rosalab.ru> 2:4.11.0-1
+- Split from kdeadmin4 package as upstream did
+- New version 4.11.0
