@@ -1,6 +1,6 @@
 Summary:	System log viewer tool for KDE4
 Name:		ksystemlog
-Version:	4.12.3
+Version:	4.12.4
 Release:	1
 Epoch:		2
 License:	GPLv2+
@@ -58,6 +58,9 @@ KSystemLog has the following features :
 %makeinstall_std -C build
 
 %changelog
+* Wed Apr 02 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 2:4.12.4-1
+- New version 4.12.4
+
 * Tue Mar 04 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 2:4.12.3-1
 - New version 4.12.3
 
