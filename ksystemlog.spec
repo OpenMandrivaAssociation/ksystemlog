@@ -1,7 +1,7 @@
 Summary:	System log viewer tool for KDE4
 Name:		ksystemlog
-Version:	15.04.3
-Release:	2
+Version:	15.08.0
+Release:	1
 Epoch:		2
 License:	GPLv2+
 Group:		Graphical desktop/KDE
@@ -51,7 +51,8 @@ KSystemLog has the following features :
 %setup -q
 
 %build
-%cmake_kde4
+%cmake_kde4 \
+	-DCMAKE_MINIMUM_REQUIRED_VERSION=3.1
 %make
 
 %install
