@@ -15,6 +15,7 @@ Url:		http://www.kde.org
 Source0:	ftp://ftp.kde.org/pub/kde/%{ftpdir}/applications/%{version}/src/%{name}-%{version}.tar.xz
 BuildRequires:	cmake(ECM)
 BuildRequires:	cmake(Qt5)
+BuildRequires:	cmake(Qt5Widgets)
 BuildRequires:	kdelibs4-devel
 Requires:	pciutils
 
