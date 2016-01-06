@@ -13,6 +13,7 @@ Url:		http://www.kde.org
 %define ftpdir stable
 %endif
 Source0:	ftp://ftp.kde.org/pub/kde/%{ftpdir}/applications/%{version}/src/%{name}-%{version}.tar.xz
+BuildRequires:	cmake(ECM)
 BuildRequires:	kdelibs4-devel
 Requires:	pciutils
 
