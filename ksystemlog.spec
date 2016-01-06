@@ -14,11 +14,23 @@ Url:		http://www.kde.org
 %endif
 Source0:	ftp://ftp.kde.org/pub/kde/%{ftpdir}/applications/%{version}/src/%{name}-%{version}.tar.xz
 BuildRequires:	cmake(ECM)
-BuildRequires:	cmake(Qt5)
-BuildRequires:	cmake(Qt5Widgets)
-BuildRequires:	cmake(Qt5Test)
-BuildRequires:	kdelibs4-devel
-Requires:	pciutils
+BuildRequires:	pkgconfig(Qt5Core)
+BuildRequires:	pkgconfig(Qt5Widgets)
+BuildRequires:	pkgconfig(Qt5Test)
+BuildRequires:	pkgconfig(Qt5PrintSupport)
+BuildRequires:	pkgconfig(libsystemd-journal)
+BuildRequires:	cmake(KF5XmlGui)
+BuildRequires:	cmake(KF5CoreAddons)
+BuildRequires:	cmake(KF5WidgetsAddons)
+BuildRequires:	cmake(KF5ItemViews)
+BuildRequires:	cmake(KF5IconThemes)
+BuildRequires:	cmake(KF5KIO)
+BuildRequires:	cmake(KF5Config)
+BuildRequires:	cmake(KF5Archive)
+BuildRequires:	cmake(KF5DocTools)
+BuildRequires:	cmake(KF5I18n)
+BuildRequires:	cmake(KF5Completion)
+BuildRequires:	cmake(KF5TextWidgets)
 
 %description
 This program is developed for being used by beginner users, which don't know
@@ -44,64 +56,19 @@ KSystemLog has the following features :
   - ACPID logs
 
 %files
-%{_kde_bindir}/ksystemlog
-%{_kde_appsdir}/ksystemlog
-%{_kde_applicationsdir}/ksystemlog.desktop
-%{_kde_docdir}/*/*/ksystemlog
+%doc %{_docdir}/HTML/en/ksystemlog/
+%{_bindir}/ksystemlog
+%{_datadir}/applications/*.desktop
+%{_datadir}/kxmlgui5/ksystemlog
 
 #------------------------------------------------------------------------
 
 %prep
 %setup -q
+%cmake_kde5
 
 %build
-%cmake_kde4 \
-	-DCMAKE_MINIMUM_REQUIRED_VERSION=3.1
-%make
+%ninja -C build
 
 %install
-%makeinstall_std -C build
-
-%changelog
-* Tue Nov 11 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 2:4.14.3-1
-- New version 4.14.3
-
-* Wed Oct 15 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 2:4.14.2-1
-- New version 4.14.2
-
-* Mon Sep 29 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 2:4.14.1-1
-- New version 4.14.1
-
-* Tue Jul 15 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 2:4.13.3-1
-- New version 4.13.3
-
-* Wed Jun 11 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 2:4.13.2-1
-- New version 4.13.2
-
-* Wed Apr 02 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 2:4.12.4-1
-- New version 4.12.4
-
-* Tue Mar 04 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 2:4.12.3-1
-- New version 4.12.3
-
-* Tue Feb 04 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 2:4.12.2-1
-- New version 4.12.2
-
-* Tue Jan 14 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 2:4.12.1-1
-- New version 4.12.1
-
-* Wed Dec 04 2013 Andrey Bondrov <andrey.bondrov@rosalab.ru> 2:4.11.4-1
-- New version 4.11.4
-
-* Wed Nov 06 2013 Andrey Bondrov <andrey.bondrov@rosalab.ru> 2:4.11.3-1
-- New version 4.11.3
-
-* Wed Oct 02 2013 Andrey Bondrov <andrey.bondrov@rosalab.ru> 2:4.11.2-1
-- New version 4.11.2
-
-* Tue Sep 03 2013 Andrey Bondrov <andrey.bondrov@rosalab.ru> 2:4.11.1-1
-- New version 4.11.1
-
-* Wed Aug 14 2013 Andrey Bondrov <andrey.bondrov@rosalab.ru> 2:4.11.0-1
-- Split from kdeadmin4 package as upstream did
-- New version 4.11.0
+%ninja_install -C build
