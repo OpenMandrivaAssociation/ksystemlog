@@ -1,6 +1,6 @@
 Summary:	System log viewer tool for KDE4
 Name:		ksystemlog
-Version:	16.08.3
+Version:	16.12.2
 Release:	1
 Epoch:		2
 License:	GPLv2+
