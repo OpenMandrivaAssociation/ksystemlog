@@ -1,6 +1,6 @@
 Summary:	System log viewer tool for KDE4
 Name:		ksystemlog
-Version:	16.12.2
+Version:	17.04.0
 Release:	1
 Epoch:		2
 License:	GPLv2+
@@ -56,8 +56,7 @@ KSystemLog has the following features :
   - Cups logs
   - ACPID logs
 
-%files
-%doc %{_docdir}/HTML/en/ksystemlog/
+%files -f %{name}.lang
 %{_bindir}/ksystemlog
 %{_datadir}/applications/*.desktop
 %{_datadir}/kxmlgui5/ksystemlog
@@ -73,3 +72,4 @@ KSystemLog has the following features :
 
 %install
 %ninja_install -C build
+%find_lang %{name} --with-html
