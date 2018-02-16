@@ -1,2 +1,4 @@
-sources:
+removed_sources:
   ksystemlog-17.12.1.tar.xz: 720003ba14fdf2a62d0b0c8003954306bf182a3c
+sources:
+  ksystemlog-17.12.2.tar.xz: 924baeeaf9b4b3744d0356884228bb794617d579
