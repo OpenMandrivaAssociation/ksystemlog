@@ -1,0 +1,30 @@
+diff -up ksystemlog-20.03.90/src/generalConfigurationWidget.cpp.omv~ ksystemlog-20.03.90/src/generalConfigurationWidget.cpp
+--- ksystemlog-20.03.90/src/generalConfigurationWidget.cpp.omv~	2020-04-14 01:15:24.902501207 +0200
++++ ksystemlog-20.03.90/src/generalConfigurationWidget.cpp	2020-04-14 01:15:29.936526844 +0200
+@@ -64,11 +64,7 @@ GeneralConfigurationWidget::GeneralConfi
+ 
+         startupLogMode->addItem(logMode->icon(), logMode->name(), QVariant(logMode->id()));
+     }
+-#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
+     connect(startupLogMode, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &GeneralConfigurationWidget::configurationChanged);
+-#else
+-    connect(startupLogMode, QOverload<int, const QString &>::of(&QComboBox::currentIndexChanged), this, &GeneralConfigurationWidget::configurationChanged);
+-#endif
+     connect(maxLines, QOverload<int>::of(&QSpinBox::valueChanged), this, &GeneralConfigurationWidget::configurationChanged);
+ 
+     connect(deleteDuplicatedLines, &QAbstractButton::clicked, this, &GeneralConfigurationWidget::configurationChanged);
+diff -up ksystemlog-20.03.90/src/statusBar.cpp.omv~ ksystemlog-20.03.90/src/statusBar.cpp
+--- ksystemlog-20.03.90/src/statusBar.cpp.omv~	2020-04-14 01:15:41.908587961 +0200
++++ ksystemlog-20.03.90/src/statusBar.cpp	2020-04-14 01:15:46.118609501 +0200
+@@ -79,11 +79,7 @@ StatusBar::StatusBar(QWidget *parent)
+     d->messageList = new KComboBox(this);
+     d->messageList->setInsertPolicy(QComboBox::InsertAtTop);
+     d->messageList->setMaxVisibleItems(5);
+-#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
+     connect(d->messageList, QOverload<int>::of(&KComboBox::currentIndexChanged), this, &StatusBar::selectLastHistory);
+-#else
+-    connect(d->messageList, QOverload<int, const QString &>::of(&KComboBox::currentIndexChanged), this, &StatusBar::selectLastHistory);
+-#endif
+     /*
+         //TODO Define a specifical palette (and make it works !)
+         QPalette palette(d->messageList->palette());
