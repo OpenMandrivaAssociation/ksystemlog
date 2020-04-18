@@ -1,7 +1,7 @@
 Summary:	System log viewer tool for KDE4
 Name:		ksystemlog
-Version:	20.03.90
-Release:	2
+Version:	20.04.0
+Release:	1
 Epoch:		2
 License:	GPLv2+
 Group:		Graphical desktop/KDE
@@ -13,7 +13,6 @@ Url:		http://www.kde.org
 %define ftpdir stable
 %endif
 Source0:	http://download.kde.org/%{ftpdir}/release-service/%{version}/src/%{name}-%{version}.tar.xz
-Patch0:		ksystemlog-20.03.90-qt-5.15.patch
 BuildRequires:	cmake(ECM)
 BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	pkgconfig(Qt5Widgets)
