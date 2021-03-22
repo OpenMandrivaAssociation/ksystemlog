@@ -1,6 +1,6 @@
 Summary:	System log viewer tool for KDE4
 Name:		ksystemlog
-Version:	20.12.3
+Version:	21.03.80
 Release:	1
 Epoch:		2
 License:	GPLv2+
@@ -61,6 +61,7 @@ KSystemLog has the following features :
 %{_datadir}/applications/*.desktop
 %{_datadir}/kxmlgui5/ksystemlog
 %{_datadir}/metainfo/org.kde.ksystemlog.appdata.xml
+%{_datadir}/qlogging-categories5/ksystemlog.categories
 
 #------------------------------------------------------------------------
 
