@@ -1,6 +1,6 @@
 Summary:	System log viewer tool for KDE4
 Name:		ksystemlog
-Version:	22.04.0
+Version:	22.04.1
 Release:	1
 Epoch:		2
 License:	GPLv2+
