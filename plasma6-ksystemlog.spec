@@ -13,11 +13,12 @@ Url:		http://www.kde.org
 %endif
 Source0:	http://download.kde.org/%{ftpdir}/release-service/%{version}/src/ksystemlog-%{version}.tar.xz
 BuildRequires:	cmake(ECM)
-BuildRequires:	pkgconfig(Qt6Core)
-BuildRequires:	pkgconfig(Qt6Widgets)
-BuildRequires:	pkgconfig(Qt6Test)
-BuildRequires:	pkgconfig(Qt6PrintSupport)
-BuildRequires:	pkgconfig(Qt6Concurrent)
+BuildRequires:	cmake(Qt6Core)
+BuildRequires:	cmake(Qt6Widgets)
+BuildRequires:	cmake(Qt6Test)
+BuildRequires:	cmake(Qt6PrintSupport)
+BuildRequires:	cmake(Qt6Concurrent)
+BuildRequires:	cmake(Qt6Core5Compat)
 BuildRequires:	pkgconfig(libsystemd)
 BuildRequires:	cmake(KF6XmlGui)
 BuildRequires:	cmake(KF6CoreAddons)
