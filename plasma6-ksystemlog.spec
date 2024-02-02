@@ -1,7 +1,7 @@
 Summary:	System log viewer tool for KDE4
 Name:		plasma6-ksystemlog
-Version:	24.01.90
-Release:	2
+Version:	24.01.95
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/KDE
 Url:		http://www.kde.org
