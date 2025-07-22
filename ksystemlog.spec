@@ -3,7 +3,7 @@
 %define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 Summary:	System log viewer tool for KDE4
 Name:		ksystemlog
-Version:	25.04.0
+Version:	25.04.3
 Release:	%{?git:0.%{git}.}1
 License:	GPLv2+
 Group:		Graphical desktop/KDE
@@ -40,6 +40,11 @@ BuildRequires:	cmake(KF6I18n)
 BuildRequires:	cmake(KF6Completion)
 BuildRequires:	cmake(KF6TextWidgets)
 
+%rename plasma6-ksystemlog
+
+BuildSystem:	cmake
+BuildOption:	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON
+
 %description
 This program is developed for being used by beginner users, which don't know
 how to find information about their Linux system, and how the log files are
@@ -63,23 +68,8 @@ KSystemLog has the following features :
   - Cups logs
   - ACPID logs
 
-%files -f ksystemlog.lang
+%files -f %{name}.lang
 %{_bindir}/ksystemlog
 %{_datadir}/applications/*.desktop
 %{_datadir}/metainfo/org.kde.ksystemlog.appdata.xml
 %{_datadir}/qlogging-categories6/ksystemlog.categories
-
-#------------------------------------------------------------------------
-
-%prep
-%autosetup -p1 -n ksystemlog-%{?git:%{gitbranchd}}%{!?git:%{version}}
-%cmake \
-	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
-	-G Ninja
-
-%build
-%ninja -C build
-
-%install
-%ninja_install -C build
-%find_lang ksystemlog --with-html
